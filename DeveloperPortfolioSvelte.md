@@ -79,3 +79,19 @@ import { devExperience } from './devExperience';
 export const schemaTypes = [devExperience];
 ```
 - Then you can add documents in the local Sanity Studio.
+
+# Getting Schema from Schema Defined in Sanity
+- First you have to install `Sanity CLI`
+```sh
+npm install -g sanity@latest
+```
+- Then you have to run the sanity studio (go in that folder) and run
+```sh
+sanity extract schema
+```
+- This will create a file `schema.json` in the root of the project.
+- Then you can use the following command to generate a typescript file from the schema.json file.
+```sh
+npx sanity typegen generate
+```
+- Now you can copy the file content, and paste it in a file in the `src/lib/types` folder. The file name can be `sanity.d.ts`.
