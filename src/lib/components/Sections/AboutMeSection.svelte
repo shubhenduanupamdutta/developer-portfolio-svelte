@@ -1,7 +1,7 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
 	import image from '$assets/about-me.jpg';
-	import { Button, SectionHeadline } from '$components';
+	import { Button, ExperienceTable, SectionHeadline } from '$components';
 
     function onclick() {
         goto("/#contact-form");
@@ -34,6 +34,8 @@
             <Button className="mt-m"{onclick}>Tell me about your project</Button>
 		</div>
 	</div>
+
+    <ExperienceTable />
 </section>
 
 <style>
