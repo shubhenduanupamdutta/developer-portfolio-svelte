@@ -78,20 +78,53 @@ import { devExperience } from './devExperience';
 
 export const schemaTypes = [devExperience];
 ```
+
 - Then you can add documents in the local Sanity Studio.
 
 # Getting Schema from Schema Defined in Sanity
+
 - First you have to install `Sanity CLI`
+
 ```sh
 npm install -g sanity@latest
 ```
+
 - Then you have to run the sanity studio (go in that folder) and run
+
 ```sh
 sanity extract schema
 ```
+
 - This will create a file `schema.json` in the root of the project.
 - Then you can use the following command to generate a typescript file from the schema.json file.
+
 ```sh
 npx sanity typegen generate
 ```
+
 - Now you can copy the file content, and paste it in a file in the `src/lib/types` folder. The file name can be `sanity.d.ts`.
+
+### Fetching Data from Sanity
+**NOTE: First make sure that CORS policy on the Sanity allows your web server localhost to fetch data from it.**
+You can fetch data from Sanity by using the following code:
+
+```ts
+export const load: PageLoad = async () => {
+	const workExperience: DevExperience[] = await sanityClient.fetch('*[_type == "devExperience"]');
+
+	return { workExperience };
+};
+```
+
+`'*[_type == "devExperience"]'` is a query which fetches all the documents of type `devExperience`.
+
+### Displaying Data in Svelte
+- Then you can use this in `+page.svelte` file.
+
+```svelte
+<script lang="ts">
+    const { data } = $props();
+    $inspect(data);
+</script>
+```
+- `data` is the name of the prop which is passed to the `+page.svelte` file, from `+page.ts` file.
