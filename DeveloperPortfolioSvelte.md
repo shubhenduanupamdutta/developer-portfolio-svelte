@@ -105,7 +105,32 @@ npx sanity typegen generate
 - Now you can copy the file content, and paste it in a file in the `src/lib/types` folder. The file name can be `sanity.d.ts`.
 
 ### Fetching Data from Sanity
+
 **NOTE: First make sure that CORS policy on the Sanity allows your web server localhost to fetch data from it.**
+**NOTE: Also is `useCdn: true` then data is cached for few minutes, so you may not see the changes immediately.**
+
+- First install the `@sanity/client` package.
+
+```sh
+npm install @sanity/client
+```
+
+Then you can create a client in the `src/lib/utils/sanity.ts` file.
+
+```ts
+import { createClient, type ClientConfig } from '@sanity/client';
+
+const config: ClientConfig = {
+	projectId: 'b448w4y2',
+	dataset: 'production',
+	useCdn: true,
+	apiVersion: '2024-09-29'
+};
+
+const sanityClient = createClient(config);
+export default sanityClient;
+```
+
 You can fetch data from Sanity by using the following code:
 
 ```ts
@@ -119,12 +144,14 @@ export const load: PageLoad = async () => {
 `'*[_type == "devExperience"]'` is a query which fetches all the documents of type `devExperience`.
 
 ### Displaying Data in Svelte
+
 - Then you can use this in `+page.svelte` file.
 
 ```svelte
 <script lang="ts">
-    const { data } = $props();
-    $inspect(data);
+	const { data } = $props();
+	$inspect(data);
 </script>
 ```
+
 - `data` is the name of the prop which is passed to the `+page.svelte` file, from `+page.ts` file.

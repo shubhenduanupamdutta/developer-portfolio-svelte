@@ -2,10 +2,17 @@
 	import { goto } from '$app/navigation';
 	import image from '$assets/about-me.jpg';
 	import { Button, ExperienceTable, SectionHeadline } from '$components';
+	import type { DevExperience } from '$lib/types/sanity';
 
-    function onclick() {
-        goto("/#contact-form");
-    }
+	interface AboutMeProps {
+		workExperience: DevExperience[];
+	}
+
+	let { workExperience }: AboutMeProps = $props();
+
+	function onclick() {
+		goto('/#contact-form');
+	}
 </script>
 
 <section class="about-me mt-l">
@@ -31,28 +38,28 @@
 				looking forward to meeting you along the way. This is also a platform where one can look for
 				local artist and other things which are unique to Mithila, and hard to find elsewhere.
 			</p>
-            <Button className="mt-m"{onclick}>Tell me about your project</Button>
+			<Button className="mt-m" {onclick}>Tell me about your project</Button>
 		</div>
 	</div>
 
-    <ExperienceTable />
+	<ExperienceTable {workExperience} />
 </section>
 
 <style>
-    .content-container {
-        display: flex;
-        justify-content: space-between;
-        align-items: stretch;
-    }
+	.content-container {
+		display: flex;
+		justify-content: space-between;
+		align-items: stretch;
+	}
 
-    .image {
-        width: 40%;
-        border-radius: 20px;
-        object-fit: cover;
-    }
+	.image {
+		width: 40%;
+		border-radius: 20px;
+		object-fit: cover;
+	}
 
-    .text {
-        width: 55%;
-        text-align: left;
-    }
+	.text {
+		width: 55%;
+		text-align: left;
+	}
 </style>

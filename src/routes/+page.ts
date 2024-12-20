@@ -4,7 +4,7 @@ import type { PageLoad } from './$types';
 
 export const load: PageLoad = async () => {
 	const workExperience: DevExperience[] = await sanityClient.fetch(
-		'*[_type == "devExperience"]'
+		'*[_type == "devExperience"] | order(startDate desc)'
 	);
     console.log(workExperience);
 	return { workExperience };
