@@ -2,9 +2,16 @@ import sanityClient from '$lib/utils/sanity';
 import type { PageLoad } from './$types';
 
 export const load: PageLoad = async () => {
-	const workExperience: DevExperience[] = await sanityClient.fetch(
+	const workExperience: devExperience[] = await sanityClient.fetch(
 		'*[_type == "devExperience"] | order(startDate desc)'
 	);
-    console.log(workExperience);
+    // console.log(workExperience);
+    const rawProject: SanityProject[] = await sanityClient.fetch(
+        "*[_type == 'project']"
+    )
+
+    
+
+    console.log(rawProject.length);
 	return { workExperience };
 };

@@ -222,3 +222,10 @@ export const project = defineType({
 });
 ```
 - This schema is used to define the project schema in Sanity.
+
+### Publishing Project on Frontend
+- First you need to install sanity image-url builder to get the image url from the image object.
+
+```sh
+npm install @sanity/image-url
+```

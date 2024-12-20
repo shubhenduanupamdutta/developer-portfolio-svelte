@@ -4,7 +4,7 @@
 	import { Button, ExperienceTable, SectionHeadline } from '$components';
 
 	interface AboutMeProps {
-		workExperience: DevExperience[];
+		workExperience: devExperience[];
 	}
 
 	let { workExperience }: AboutMeProps = $props();
