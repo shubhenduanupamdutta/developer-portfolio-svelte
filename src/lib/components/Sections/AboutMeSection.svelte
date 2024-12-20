@@ -2,7 +2,6 @@
 	import { goto } from '$app/navigation';
 	import image from '$assets/about-me.jpg';
 	import { Button, ExperienceTable, SectionHeadline } from '$components';
-	import type { DevExperience } from '$lib/types/sanity';
 
 	interface AboutMeProps {
 		workExperience: DevExperience[];

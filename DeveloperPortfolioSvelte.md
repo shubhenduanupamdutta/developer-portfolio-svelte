@@ -102,7 +102,7 @@ sanity extract schema
 npx sanity typegen generate
 ```
 
-- Now you can copy the file content, and paste it in a file in the `src/lib/types` folder. The file name can be `sanity.d.ts`.
+- Now you can copy the file content, and paste it in a file in the `src/lib/types` folder. The file name must be `sanity.d.ts`. Because when we use `.d.ts` extension, it is automatically included in the project globally.
 
 ### Fetching Data from Sanity
 
