@@ -6,7 +6,9 @@ export const load: PageLoad = async () => {
 		'*[_type == "devExperience"] | order(startDate desc)'
 	);
 	// console.log(workExperience);
-	const rawProject: SanityProject[] = await sanityClient.fetch("*[_type == 'project']");
+	const rawProject: SanityProject[] = await sanityClient.fetch(
+		"*[_type == 'project'] | order(dateAccomplished desc)"
+	);
 
 	// console.log('BEFORE PROCESSING');
 	// console.log(rawProject[0]);
