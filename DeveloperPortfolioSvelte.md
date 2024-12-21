@@ -221,9 +221,11 @@ export const project = defineType({
 	]
 });
 ```
+
 - This schema is used to define the project schema in Sanity.
 
 ### Publishing Project on Frontend
+
 - First you need to install sanity image-url builder to get the image url from the image object.
 
 ```sh
@@ -231,3 +233,50 @@ npm install @sanity/image-url
 ```
 
 ## NOTE: `fetch` doesn't throw error automatically, you have to parse the response and throw error manually.
+
+## Deployment to Vercel
+
+- First install Vercel adapter
+
+```sh
+npm i -D @sveltejs/adapter-vercel
+```
+
+- Then you have to add the adapter in the `svelte.config.js` file.
+
+```js
+import adapter from '@sveltejs/adapter-vercel';
+import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
+
+/** @type {import('@sveltejs/kit').Config} */
+const config = {
+	// Consult https://svelte.dev/docs/kit/integrations
+	// for more information about preprocessors
+	preprocess: vitePreprocess(),
+
+	kit: {
+		// adapter-auto only supports some environments, see https://svelte.dev/docs/kit/adapter-auto for a list.
+		// If your environment is not supported, or you settled on a specific environment, switch out the adapter.
+		// See https://svelte.dev/docs/kit/adapters for more information about adapters.
+		adapter: adapter(),
+		alias: {
+			$components: 'src/lib/components',
+			$assets: 'src/assets'
+		}
+	},
+
+	runtime: 'nodesjs22.x'
+};
+
+export default config;
+```
+
+- Then you deploy sanity project by going inside the sanity studio
+
+```sh
+sanity deploy
+```
+
+deployed to: [Sanity Studio](https://shubhendu-dev-portfolio.sanity.studio/structure)
+
+- You also have to add your deployed website url to allowed hosts in the sanity project.

@@ -18,7 +18,7 @@ const config = {
 		}
 	},
 
-	runtime: 'nodesjs22.x'
+	runtime: 'nodejs22.x'
 };
 
 export default config;
