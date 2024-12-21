@@ -229,3 +229,5 @@ export const project = defineType({
 ```sh
 npm install @sanity/image-url
 ```
+
+## NOTE: `fetch` doesn't throw error automatically, you have to parse the response and throw error manually.
