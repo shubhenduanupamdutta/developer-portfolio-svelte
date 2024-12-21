@@ -1,4 +1,5 @@
 import { createClient, type ClientConfig } from '@sanity/client';
+import ImageUrlBuilder from '@sanity/image-url';
 
 const config: ClientConfig = {
 	projectId: 'b448w4y2',
@@ -11,5 +12,18 @@ const sanityClient = createClient(config);
 export default sanityClient;
 
 export function processProjectEntries(rawProject: SanityProject) {
-    const processedProject: ProcessedProject[] = [];
+	const builder = ImageUrlBuilder(sanityClient);
+	const projectImageUrl = builder.image(rawProject.image).url();
+
+	const processedProject: ProcessedProject = {
+		name: rawProject.name,
+		company: rawProject.company,
+		dateAccomplished: rawProject.dateAccomplished,
+		stack: rawProject.stack,
+		projectImageUrl: projectImageUrl,
+		slug: rawProject.slug
+		// content: Array<ProcessedTextContent | ProcessedImageContent>,
+	};
+
+	return processedProject;
 }

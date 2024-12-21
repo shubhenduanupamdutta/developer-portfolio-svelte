@@ -19,7 +19,7 @@ type SanityProject = {
 	name: string;
 	company: string;
 	slug: string;
-	image?: {
+	image: {
 		asset?: {
 			_ref: string;
 			_type: 'reference';
