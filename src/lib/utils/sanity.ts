@@ -21,9 +21,31 @@ export function processProjectEntries(rawProject: SanityProject) {
 		dateAccomplished: rawProject.dateAccomplished,
 		stack: rawProject.stack,
 		projectImageUrl: projectImageUrl,
-		slug: rawProject.slug
-		// content: Array<ProcessedTextContent | ProcessedImageContent>,
+		slug: rawProject.slug,
+		content: rawProject.content.map(processProjectContent)
 	};
 
 	return processedProject;
+}
+
+function processProjectContent(content: RawTextContent | RawImageContent) {
+	if (content._type === 'block') {
+		// Process Text Content
+		const processedTextContent: ProcessedTextContent = {
+			type: 'text',
+			style: content.style,
+			textToRender: content.children.map((child) => child.text).join('\n')
+		};
+		return processedTextContent;
+	} else {
+		// Process Image Content
+		const builder = ImageUrlBuilder(sanityClient);
+		const imageUrl = builder.image(content).url();
+
+		const processedImageContent: ProcessedImageContent = {
+			type: 'image',
+			url: imageUrl
+		};
+		return processedImageContent;
+	}
 }
