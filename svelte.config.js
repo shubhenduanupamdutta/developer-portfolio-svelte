@@ -1,4 +1,4 @@
-import adapter from '@sveltejs/adapter-auto';
+import adapter from '@sveltejs/adapter-vercel';
 import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
 
 /** @type {import('@sveltejs/kit').Config} */
@@ -16,7 +16,9 @@ const config = {
 			$components: 'src/lib/components',
 			$assets: 'src/assets'
 		}
-	}
+	},
+
+	runtime: 'nodesjs22.x'
 };
 
 export default config;
