@@ -10,8 +10,7 @@ export const load: PageLoad = async () => {
 		"*[_type == 'project'] | order(dateAccomplished desc)"
 	);
 
-	// console.log('BEFORE PROCESSING');
-	// console.log(rawProject[0]);
+	const skills: Skill[] = await sanityClient.fetch(`*[_type == 'skills'][0].skillsList`);
 
 	const projects = rawProject.map(processProjectEntries);
 
@@ -19,5 +18,5 @@ export const load: PageLoad = async () => {
 	// console.log(projects[0]);
 
 	console.log(rawProject.length);
-	return { workExperience, projects };
+	return { workExperience, projects, skills };
 };

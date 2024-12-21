@@ -5,7 +5,8 @@
 	const { data } = $props();
 	// $inspect(data);
 
-	let { workExperience, projects } = data;
+	let { workExperience, projects, skills } = data;
+    $inspect(skills)
 </script>
 
 <HeroSection />
