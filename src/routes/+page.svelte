@@ -1,5 +1,6 @@
 <script lang="ts">
 	import { AboutMeSection, HeroSection, SkillsSection } from '$components';
+	import ContactSection from '$components/Sections/ContactSection.svelte';
 	import MyWorkSection from '$components/Sections/MyWorkSection.svelte';
 
 	const { data } = $props();
@@ -13,3 +14,4 @@
 <AboutMeSection {workExperience} />
 <MyWorkSection {projects} />
 <SkillsSection {skills} />
+<ContactSection />
