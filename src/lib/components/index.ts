@@ -6,3 +6,4 @@ export { default as ContactSection } from './Sections/ContactSection.svelte';
 export { default as HeroSection } from './Sections/HeroSection.svelte';
 export { default as MyWorkSection } from './Sections/MyWorkSection.svelte';
 export { default as SkillsSection } from './Sections/SkillsSection.svelte';
+export { default as Navbar } from './Navbar.svelte';
