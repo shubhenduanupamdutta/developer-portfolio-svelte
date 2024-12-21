@@ -52,9 +52,8 @@
 			</div>
 		{:else if isLoading}
 			<div class="spinner-container">
-				<div class="spinner">
-					<h3>Sending the contact form.</h3>
-				</div>
+				<div class="spinner"></div>
+				<h3>Sending the contact form.</h3>
 			</div>
 		{:else if showErrorMessage}
 			<h3>
